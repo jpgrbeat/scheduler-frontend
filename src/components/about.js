@@ -1,5 +1,5 @@
 import React from 'react'
-import {withRouter} from 'react-router'
+
 const About =()=>{
   return(
     <React.Fragment>
@@ -17,4 +17,4 @@ const About =()=>{
     </React.Fragment>
   )
 }
-export default withRouter(About)
+export default About;

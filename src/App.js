@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Route,Switch,Link} from 'react-router-dom';
+import {Route,Switch,Link, withRouter} from 'react-router-dom';
 import About from './components/about'
 import Login from './forms/Login'
 const requestHelper = url =>
@@ -46,9 +46,8 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
         <Switch>
-          <Route exact to='/' render={()=>(
+          <Route exact path='/' render={()=>(
           <div className="welcome">
             <h2>Welcome to Keep Me Posted</h2>
             <h3>Login or Learn more by clicking the about button</h3>
@@ -57,9 +56,9 @@ class App extends Component {
           </div>
         )}/>
           <Route exact path='/login' render={(props)=><Login{...props}/>}/>
-          <Route exact path='/about' render={()=><About/>}/>
+          <Route exact path='/about' component={About}/>
         </Switch>
-      </React.Fragment>
+
     );
   }
 }
