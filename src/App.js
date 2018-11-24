@@ -49,7 +49,7 @@ class App extends Component {
     return (
 
         <Switch>
-          <Route exact to='/' render={()=>(
+          <Route exact path='/' render={()=>(
           <div className="welcome">
             <h2>Welcome to Keep Me Posted</h2>
             <h3>Login or Learn more by clicking the about button</h3>
@@ -57,8 +57,8 @@ class App extends Component {
             <Link className='about-button' to='/about'>About</Link>
           </div>
         )}/>
-          <Route  path='/login' component={Login}/>
-          <Route  path='/about' component={About}/>
+          <Route exact path='/login' component={Login}/>
+          <Route exact path='/about' component={About}/>
         </Switch>
 
     );

@@ -1,5 +1,4 @@
 import React from 'react'
-import {withRouter} from 'react-router'
 const About =()=>{
   return(
     <React.Fragment>
@@ -12,9 +11,9 @@ const About =()=>{
         The project was built using React, Redux and Ruby on Rails.
       </p>
       <p>
-        I am hoping that over time I do not get completely ambushed by Chrome notifications. If you have any questions, email me at <span><a href="mailto:joshua.ross.miller@gmail.com">Josh Miller</a></span>. The code base for this project is contained <span>here</span> and <span>here</span>.
+        I am hoping that over time I do not get completely ambushed by Chrome notifications. If you have any questions, email me  <span><a href="mailto:joshua.ross.miller@gmail.com">here</a></span>. The code base for this project is contained <span>here</span> and <span>here</span>.
       </p>
     </React.Fragment>
   )
 }
-export default withRouter(About)
+export default About

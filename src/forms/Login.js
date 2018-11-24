@@ -26,6 +26,12 @@ class Login extends React.Component {
 
     }
   }
-
+  render(){
+    return(
+      <div>
+        <label>Login</label>
+      </div>
+    )
+  }
 }
 export default withRouter(Login)
