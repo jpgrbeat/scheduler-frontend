@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Route,Switch,Link} from 'react-router-dom';
+import {withRouter} from 'react-router'
 import Login from './forms/Login'
 import About from './components/about'
 const requestHelper = url =>
@@ -46,7 +47,7 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
+
         <Switch>
           <Route exact to='/' render={()=>(
           <div className="welcome">
@@ -56,12 +57,12 @@ class App extends Component {
             <Link className='about-button' to='/about'>About</Link>
           </div>
         )}/>
-          <Route exact path='/login' component={Login}/>
-          <Route exact path='/about' component={About}/>
+          <Route  path='/login' component={Login}/>
+          <Route  path='/about' component={About}/>
         </Switch>
-      </React.Fragment>
+
     );
   }
 }
 
-export default App;
+export default withRouter(App);
