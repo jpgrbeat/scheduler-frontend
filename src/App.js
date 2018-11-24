@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Route,Switch,Link} from 'react-router-dom';
-import About from './components/about'
 import Login from './forms/Login'
+import About from './components/about'
 const requestHelper = url =>
   fetch(url, {
     method: "GET",
@@ -52,12 +52,12 @@ class App extends Component {
           <div className="welcome">
             <h2>Welcome to Keep Me Posted</h2>
             <h3>Login or Learn more by clicking the about button</h3>
-            <Link  to='/login'>Login</Link>
-            <Link  to='/about'>About</Link>
+            <Link className='login-button' to='/login'>Login</Link>
+            <Link className='about-button' to='/about'>About</Link>
           </div>
         )}/>
-          <Route exact path='/login' render={(props)=><Login{...props}/>}/>
-          <Route exact path='/about' render={()=><About/>}/>
+          <Route exact path='/login' component={Login}/>
+          <Route exact path='/about' component={About}/>
         </Switch>
       </React.Fragment>
     );
