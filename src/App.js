@@ -4,6 +4,8 @@ import {Route,Switch,Link} from 'react-router-dom';
 import {withRouter} from 'react-router'
 import Login from './forms/Login'
 import About from './components/about'
+import ForgotPassword from './forms/forgotPassword'
+import NewUser from './forms/newUser'
 const requestHelper = url =>
   fetch(url, {
     method: "GET",
@@ -58,6 +60,8 @@ class App extends Component {
           </div>
         )}/>
           <Route exact path='/login' component={Login}/>
+          <Route exact path='/forgotpassword' component={ForgotPassword}/>
+          <Route exact path='/newuser' component={NewUser}/>
           <Route exact path='/about' component={About}/>
         </Switch>
 
@@ -65,4 +69,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default App;
