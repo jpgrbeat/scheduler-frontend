@@ -1,32 +1,96 @@
 import React from 'react'
-
+import PasswordWarning from '../components/passwordWarning'
+import EmailWarning from '../components/emailWarning'
 class NewUser extends React.Component{
   state={
     name: "",
     email: "",
-    password: ""
+    password: null,
+    visibilityPasswordWarning: false,
+    visibilityEmailWarning: false,
+    preventSubmit: false
+  };
+
+  changeHandler=(e)=>{
+  const {value,name} = e.target;
+
+    if(name === "password2" && this.state.password !== null){
+      console.log('here')
+      this.validatePassword(value)
+    }else if(name === 'email'){
+      this.validateEmail(value)
+    }else{
+      this.setState({
+        [name]:value
+      });
+    };
   }
 
+  validatePassword(value){
+    for(let i = 0; i < value.length; i++){
+      if(this.state.password[i] !== value[i]){
+        console.log(i)
+        this.setState({
+          visibilityPasswordWarning:true,
+          preventSubmit:true
+        });
+      }else{
+        if(this.state.visibilityPasswordWarning){
+          this.setState({
+            visibilityPasswordWarning:false
+          })
+        }else if (this.state.preventSubmit){
+          this.setState({
+            preventSubmit:false
+          });
+        }
+      }
+    }
+  }
+  validateEmail(value){
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    let emailBool = value.match(re);
+    if(!emailBool){
+      this.setState({
+        visibilityEmailWarning:true,
+        preventSubmit:true
+      })
+    }else{
+      if(this.state.visibilityEmailWarning){
+        this.setState({
+          visibilityEmailWarning:false
+        });
+        if(this.state.visibilityPasswordWarning){
+          this.setState({
+            preventSubmit:false
+          });
+        }
+      }
+    }
+  }
   render(){
+    let {visibilityEmailWarning, visibilityPasswordWarning} = this.state;
     return(
       <form>
       <label>Full Name</label><br>
       </br>
-      <input type='text' name='name'/><br>
+      <input type='text' name='name' onChange={this.changeHandler}/><br>
       </br>
       <label>Email</label><br>
       </br>
-      <input type='text' name='email'/><br>
+      <input type='text' name='email' onChange={this.changeHandler}/><br>
       </br>
+      {visibilityEmailWarning ? <EmailWarning/> : null}
       <label>Password</label><br>
       </br>
-      <input type='password' name='password'/><br>
+      <input type='password' name='password' onChange={this.changeHandler}/><br>
       </br>
       <label>Retype Password</label><br>
       </br>
-      <input type='password' name='password2'/><br>
+      <input type='password' name='password2' onChange={this.changeHandler}/><br>
       </br>
-      <button type='submit' value='submit'>Submit</button>
+      {visibilityPasswordWarning ? <PasswordWarning/> : null}
+      <button type='submit' value='submit' onChange={this.changeHandler}>Submit</button>
       </form>
     )
   }
