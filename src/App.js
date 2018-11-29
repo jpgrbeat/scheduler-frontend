@@ -6,6 +6,7 @@ import Login from './forms/Login'
 import About from './components/about'
 import ForgotPassword from './forms/forgotPassword'
 import NewUser from './forms/newUser'
+import ScheduleHome from './containers/scheduleHome'
 const requestHelper = url =>
   fetch(url, {
     method: "GET",
@@ -43,13 +44,11 @@ class App extends Component {
   logout=()=>{
       localStorage.clear()
       this.props.history.push('/')
-      this.props.setActiveUser({user:null})
     }
 
 
   render() {
     return (
-
         <Switch>
           <Route exact path='/' render={()=>(
           <div className="welcome">
@@ -63,6 +62,7 @@ class App extends Component {
           <Route exact path='/forgotpassword' component={ForgotPassword}/>
           <Route exact path='/newuser' component={NewUser}/>
           <Route exact path='/about' component={About}/>
+          <Route exact path='/home' component={ScheduleHome}/>
         </Switch>
 
     );

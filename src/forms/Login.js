@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link,Route} from 'react-router-dom'
-
+import {login} from '../redux/actions/userActions'
+import {connect} from 'react-redux'
 class Login extends React.Component {
 
 
@@ -21,9 +22,8 @@ class Login extends React.Component {
     e.preventDefault();
     const {email,password} = this.state;
     this.setState({submitted:true});
-
     if(email && password){
-
+      this.props.login(email,password);
     }
   }
   render(){
@@ -51,4 +51,4 @@ class Login extends React.Component {
     )
   }
 }
-export default Login
+export default connect(null,{login})(Login)

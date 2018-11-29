@@ -1,14 +1,14 @@
 import {combineReducers} from 'redux'
 
-function testReducer(state=null, action){
+ function userReducer(state=null,action){
   switch(action.type){
-    case 'TEST':
-      return action.test
+    case 'SET_USER':
+      return action.user
     default:
-      return state;
+      return state
   }
 }
 const rootReducer = combineReducers({
-  test: testReducer
+  user:userReducer
 })
 export default rootReducer

@@ -9,13 +9,13 @@ import register from './serviceWorker';
 import thunk from "redux-thunk";
 import rootReducer from './redux/scheduleReducer'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION__COMPOSE|| compose;
 const store = createStore(
   rootReducer,composeEnhancers(applyMiddleware(thunk))
 )
 
 ReactDOM.render(
-  <Provider store= {store}>
+  <Provider store={store}>
     <Router>
       <Route  component={App}/>
     </Router>
