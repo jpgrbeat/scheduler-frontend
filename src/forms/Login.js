@@ -29,16 +29,16 @@ class Login extends React.Component {
   render(){
     return(
       <React.Fragment>
-        <form className='login-form'>
+        <form className='login-form' onSubmit={this.handleSubmit}>
           <label>Login</label>
           <br></br>
           <label>Email</label>
           <br></br>
-          <input type='text'/>
+          <input type='text' name='email' onChange={this.handleChange}/>
           <br></br>
           <label>Password</label>
           <br></br>
-          <input type='password'/>
+          <input type='password' name='password' onChange={this.handleChange}/>
           <br></br>
           <button type='submit'>Submit</button>
         </form>
