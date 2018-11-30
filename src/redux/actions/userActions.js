@@ -15,7 +15,6 @@ export function login(email,password){
 
 
   return function(dispatch){
-    debugger
      fetch(url,{
       method: 'POST',
       headers:headers,
