@@ -1,5 +1,6 @@
 
 import {SET_USER} from '../constants/UserConstants'
+import {push} from 'connected-react-router'
 export function login(email,password){
   const url = 'http://localhost:3000/login';
 
@@ -30,6 +31,7 @@ export function login(email,password){
     }).then(json=>{
       localStorage.setItem('token',json.token)
       dispatch({type:SET_USER, user:json.user})
+      setTimeout(()=>dispatch(push('/home')),2000)
     })
   }
 }

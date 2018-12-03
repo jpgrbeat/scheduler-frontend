@@ -34,7 +34,6 @@ class App extends Component {
   }
 
   updateUser(user) {
-    debugger
     if(!user){
       alert("error logging back in");
     }
@@ -59,7 +58,7 @@ class App extends Component {
             <Link className='about-button' to='/about'>About</Link>
           </div>
         )}/>
-          <Route exact path='/login' component={Login}/>
+          <Route exact path='/login' render={(...props)=><Login {...props}/>}/>
           <Route exact path='/forgotpassword' component={ForgotPassword}/>
           <Route exact path='/newuser' component={NewUser}/>
           <Route exact path='/about' component={About}/>
