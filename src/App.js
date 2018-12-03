@@ -34,7 +34,8 @@ class App extends Component {
   }
 
   updateUser(user) {
-    if(!user.ok){
+    debugger
+    if(!user){
       alert("error logging back in");
     }
     else{

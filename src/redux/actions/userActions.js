@@ -21,9 +21,10 @@ export function login(email,password){
       body: data
     }).then(res => {
       console.log(res)
-      if (res.status === 401) {
+      if (res.status === 401 || res.status === 404) {
             alert("login failed");
           } else {
+
             return res.json();
           }
     }).then(json=>{
