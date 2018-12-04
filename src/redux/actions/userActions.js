@@ -1,12 +1,14 @@
 
 import {SET_USER} from '../constants/UserConstants'
-import {Dispatch} from 'react-redux'
+import {push} from 'connected-react-router'
 export function login(email,password){
   const url = 'http://localhost:3000/login';
+
   let data= JSON.stringify({
     email: email,
     password: password
   });
+
   const headers = {
     'Content-Type':'application/json',
     'Accept': 'application/json'
@@ -14,21 +16,22 @@ export function login(email,password){
 
 
   return function(dispatch){
-    return fetch(url,{
+     fetch(url,{
       method: 'POST',
       headers:headers,
       body: data
-    })
-    .then(res => {
-      if (res.status === 401) {
+    }).then(res => {
+      console.log(res)
+      if (res.status === 401 || res.status === 404) {
             alert("login failed");
           } else {
+
             return res.json();
           }
+    }).then(json=>{
+      localStorage.setItem('token',json.token)
+      dispatch({type:SET_USER, user:json.user})
+      setTimeout(()=>dispatch(push('/home')),2000)
     })
   }
-  .then(json=>{
-    localStorage.setItem('token',json.token)
-    dispatch({type:SET_USER, user:json.user})
-  })
 }

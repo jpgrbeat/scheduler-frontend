@@ -1,9 +1,69 @@
 
+.navbar{
+  width: 100%;
+  height: 40px;
+  background-color: #66DEF3;
+  display: inline-block;
+}
+.navbar h3{
+  display: inline-block;
+  width: 40%;
+  margin: 7px 0 0 5px;
+  border: 0;
+}
+.navbar a{
+  text-decoration: none;
+  float: right;
+  padding: 11px 5px 11px 5px;
+}
+.navbar a:visited{
+  text-decoration: none;
+}
+.navbar a:hover{
+  background-color: #3C8A98;
+  color: white;
+}
+.welcome{
+  margin-top: 100px;
+  text-align: center;
+}
+.welcome button{
+  margin-right: 5px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.welcome a{
+  text-decoration: none;
+}
 
-
-.login-form{
+.login-container{
   display: block;
+  margin-top: 100px;
+  padding: 100px;
+  border-radius: 25px;
+  background-color: #f2f2f2;
 }
 .login-links{
+  padding-top: 20px;
   display:inline-block;
+}
+.login-links a{
+  margin-right: 5px;
+
+}
+.login-form input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login-form button{
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  float:right;
 }
