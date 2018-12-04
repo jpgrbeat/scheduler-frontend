@@ -7,6 +7,8 @@ import About from './components/about'
 import ForgotPassword from './forms/forgotPassword'
 import NewUser from './forms/newUser'
 import ScheduleHome from './containers/scheduleHome'
+import WelcomePage from './components/WelcomePage'
+import NavBar from './components/NavBar'
 const requestHelper = url =>
   fetch(url, {
     method: "GET",
@@ -38,33 +40,27 @@ class App extends Component {
       alert("error logging back in");
     }
     else{
-      console.log('cool');
+      this.props.history.push('/home');
     }
   }
   logout=()=>{
       localStorage.clear()
-      this.props.history.push('/')
     }
 
 
   render() {
     return (
+      <React.Fragment>
+      {localStorage.length > 0 ? <NavBar history={this.props.history} logout={this.logout}/> : null}
         <Switch>
-          <Route exact path='/' render={()=>(
-          <div className="welcome">
-            <h2>Welcome to Keep Me Posted</h2>
-            <h3>Login or Learn more by clicking the about button</h3>
-            <Link className='login-button' to='/login'>Login</Link>
-            <Link className='about-button' to='/about'>About</Link>
-          </div>
-        )}/>
-          <Route exact path='/login' render={(...props)=><Login {...props}/>}/>
+          <Route exact path='/' render={()=><WelcomePage/>}/>
+          <Route exact path='/login' component={Login}/>
           <Route exact path='/forgotpassword' component={ForgotPassword}/>
           <Route exact path='/newuser' component={NewUser}/>
           <Route exact path='/about' component={About}/>
           <Route exact path='/home' component={ScheduleHome}/>
         </Switch>
-
+      </React.Fragment>
     );
   }
 }
