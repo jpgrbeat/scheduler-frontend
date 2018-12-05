@@ -13,8 +13,8 @@ const WelcomePage = ()=>{
     <div className="welcome">
       <h2>Welcome to Keep Me Posted</h2>
       <h3>Login or Learn more by clicking the about button</h3>
-      <button><Link className='login-button' to='/login'>Login</Link></button>
-      <button><Link className='about-button' to='/about'>About</Link></button>
+      <Link className='login-button' to='/login'><button>Login</button></Link>
+      <Link className='about-button' to='/about'><button>About</button></Link>
     </div>
     </Grid>
   )
